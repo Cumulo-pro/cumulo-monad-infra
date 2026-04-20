@@ -42,29 +42,22 @@
     "name": "Thirdweb",
     "x": "thirdweb",
     "webservices": "https://thirdweb.com",
-    "validatorlogo": "",
+    "validatorlogo": "thirdweb.jpg",
     "evm-rpc": "https://10143.rpc.thirdweb.com"
   },
   {
     "name": "Ankr",
     "x": "ankr",
     "webservices": "https://ankr.com",
-    "validatorlogo": "",
+    "validatorlogo": "ankr.jpg",
     "evm-rpc": "https://rpc.ankr.com/monad_testnet"
   },
   {
     "name": "Tatum",
     "x": "tatum_io",
     "webservices": "https://tatum.io",
-    "validatorlogo": "",
+    "validatorlogo": "tatum.jpg",
     "evm-rpc": "https://monad-testnet.gateway.tatum.io"
-  },
-  {
-    "name": "Hypersync",
-    "x": "hypersync",
-    "webservices": "https://hypersync.xyz",
-    "validatorlogo": "",
-    "evm-rpc": "https://monad-testnet.rpc.hypersync.xyz"
   },
   {
     "name": "MonadVision",
