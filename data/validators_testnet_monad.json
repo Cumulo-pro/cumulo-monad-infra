@@ -87,7 +87,7 @@
   {
     "name": "MonadScan",
     "x": "monadscan",
-    "webservices": "https://testnet.monadscan.com",
+    "webservices": "https://itrocket.net/services/testnet/monad/",
     "validatorlogo": "",
     "explorer": "https://testnet.monadscan.com"
   },
