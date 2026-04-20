@@ -1,128 +1,128 @@
 # Monad Testnet — Metrics Reference
 
-> Documentación de referencia de todas las métricas expuestas por el nodo Monad.  
-> Las métricas se recogen vía OTEL Collector y se exponen en `http://0.0.0.0:8889/metrics`.  
-> Todas las métricas usan el scope `job="monad_full_Cumulo-1"` en la configuración de este nodo.
+> Reference documentation for all metrics exposed by the Monad node.  
+> Metrics are collected via the OTEL Collector and exposed at `http://0.0.0.0:8889/metrics`.  
+> All metrics are scoped to `job="monad_full_Cumulo-1"` in this node's configuration.
 
 ---
 
-## Fuentes de métricas
+## Metric Sources
 
-| Subsistema | Servicios |
+| Subsystem | Services |
 |---|---|
-| Consenso y producción de bloques | `monad-bft` |
-| Ejecución y ledger | `monad-execution` |
+| Consensus & block production | `monad-bft` |
+| Execution & ledger | `monad-execution` |
 | RPC | `monad-rpc` |
-| Pipeline de recolección | `otelcol` → Prometheus scrape en `:8889/metrics` |
+| Collection pipeline | `otelcol` → Prometheus scrape at `:8889/metrics` |
 
 ---
 
-## ⛓ Consenso y Producción de Bloques
+## ⛓ Consensus & Block Production
 
 ---
 
 ### `Node Status`
 
-**Métrica Prometheus:** `monad_statesync_syncing`
+**Prometheus metric:** `monad_statesync_syncing`
 
-| Campo | Valor |
+| Field | Value |
 |---|---|
-| Tipo | Gauge |
-| Unidad | booleano (0 / 1) |
+| Type | Gauge |
+| Unit | boolean (0 / 1) |
 
-El nodo tiene dos estados posibles: **LIVE** (operando con normalidad, valor `0`) o **SYNCING** (resincronizando con la cadena, valor `1`). En Grafana se muestra invertido (`1 - monad_statesync_syncing`) para que `1 = LIVE`. Si el nodo se queda atrás respecto a la cadena, el valor vuelve a `1` automáticamente hasta que se recupere.
+Whether the node is currently live or catching up with the chain. Grafana displays this inverted (`1 - monad_statesync_syncing`) so that `1 = LIVE` and `0 = SYNCING`. If the node falls behind, the value flips to `1` automatically until it recovers.
 
 ---
 
 ### `Block Height`
 
-**Métrica Prometheus:** `monad_execution_ledger_block_num`
+**Prometheus metric:** `monad_execution_ledger_block_num`
 
-| Campo | Valor |
+| Field | Value |
 |---|---|
-| Tipo | Gauge |
-| Unidad | número de bloque (entero) |
+| Type | Gauge |
+| Unit | block number (integer) |
 
-Número del último bloque procesado por la capa de ejecución. Debe subir de forma continua — si la línea se queda plana, el nodo ha dejado de avanzar.
+The latest block number processed by the execution layer. This value should increase continuously — a flat line means the node has stalled.
 
 ---
 
 ### `Block Commits & TX Commits (rate)`
 
-**Métricas Prometheus:**
-- `monad_state_consensus_events_commit_block` → Bloques/s
+**Prometheus metrics:**
+- `monad_state_consensus_events_commit_block` → Blocks/s
 - `monad_execution_ledger_num_tx_commits` → TX commits/s
 
-| Campo | Valor |
+| Field | Value |
 |---|---|
-| Tipo | Counter (tasa) |
-| Unidad | bloques/s y transacciones/s |
+| Type | Counter (rate) |
+| Unit | blocks/s and transactions/s |
 
-Muestra el ritmo al que el nodo está procesando bloques y transacciones. En condiciones normales de testnet se espera aproximadamente **1 bloque/s**. La tasa de TX refleja el volumen real de transacciones finalizadas por el nodo.
+The rate at which the node is processing blocks and transactions. Under normal testnet conditions, expect approximately **1 block/s**. The TX rate reflects the actual volume of transactions finalized by the node.
 
 ---
 
 ### `Vote Delay (p50 / p90 / p99)`
 
-**Métricas Prometheus:**
+**Prometheus metrics:**
 - `monad_state_vote_delay_ready_after_timer_start_p50_ms`
 - `monad_state_vote_delay_ready_after_timer_start_p90_ms`
 - `monad_state_vote_delay_ready_after_timer_start_p99_ms`
 
-| Campo | Valor |
+| Field | Value |
 |---|---|
-| Tipo | Gauge |
-| Unidad | milisegundos |
+| Type | Gauge |
+| Unit | milliseconds |
 
-Tiempo que tarda el nodo en estar listo para votar desde que arranca el temporizador de ronda, medido en percentiles (mediana, 90% y peor caso). En un nodo completo (*full node*) este valor refleja la latencia de observación, no el voto real — el log `not voting on proposal, is not coherent` es completamente normal.
+How long it takes the node to be ready to vote after the round timer starts, shown at three percentiles (median, 90th, and worst case). On a full node this reflects observation latency, not actual voting — the log message `not voting on proposal, is not coherent` is completely expected.
 
 ---
 
-## ✅ Eventos de Consenso
+## ✅ Consensus Events
 
 ---
 
 ### `QC / TC / NEC Created (rate)`
 
-**Métricas Prometheus:**
+**Prometheus metrics:**
 - `monad_state_consensus_events_created_qc` → QC/s
 - `monad_state_consensus_events_created_tc` → TC/s
 - `monad_state_consensus_events_created_nec` → NEC/s
 
-| Campo | Valor |
+| Field | Value |
 |---|---|
-| Tipo | Counter (tasa) |
-| Unidad | certificados/s |
+| Type | Counter (rate) |
+| Unit | certificates/s |
 
-Tres tipos de certificados de consenso:
+Three types of consensus certificates:
 
-- **QC (Quorum Certificate):** Se forma cuando suficientes validadores coinciden en una propuesta de bloque. Su tasa debería seguir de cerca la tasa de bloques — es el camino feliz del consenso.
-- **TC (Timeout Certificate):** Se produce cuando una ronda expira sin alcanzar QC. Alguno ocasional es normal; una tasa sostenida indica inestabilidad en el consenso o problemas de red.
-- **NEC (No-Extension Certificate):** Indica que la ronda no extendió la cadena. Debe ser raro en condiciones saludables.
+- **QC (Quorum Certificate):** Formed when enough validators agree on a block proposal. Its rate should closely track the block commit rate — this is the happy path of consensus.
+- **TC (Timeout Certificate):** Produced when a round expires without reaching a QC. Occasional TCs are normal; a sustained high rate indicates consensus instability or network issues.
+- **NEC (No-Extension Certificate):** Signals the round did not extend the chain. Should be rare under healthy conditions.
 
 ---
 
 ### `Validation Errors (rate)`
 
-**Métricas Prometheus:**
+**Prometheus metrics:**
 - `monad_state_validation_errors_invalid_signature`
 - `monad_state_validation_errors_invalid_epoch`
 - `monad_state_validation_errors_insufficient_stake`
 - `monad_state_validation_errors_invalid_author`
 
-| Campo | Valor |
+| Field | Value |
 |---|---|
-| Tipo | Counter (tasa a 5m) |
-| Unidad | errores/s |
+| Type | Counter (5m rate) |
+| Unit | errors/s |
 
-Mensajes rechazados por el nodo durante la validación de consenso:
+Messages rejected by the node during consensus validation:
 
-- **invalid_signature:** Firma criptográfica incorrecta.
-- **invalid_epoch:** El mensaje pertenece a una época distinta — puede ocurrir brevemente durante transiciones de época.
-- **insufficient_stake:** El remitente no tiene stake suficiente para participar.
-- **invalid_author:** El autor declarado no es un validador reconocido.
+- **invalid_signature:** Cryptographic signature is incorrect.
+- **invalid_epoch:** The message belongs to a different epoch — can occur briefly during epoch transitions.
+- **insufficient_stake:** The sender does not have enough stake to participate.
+- **invalid_author:** The declared author is not a recognized validator.
 
-Picos aislados son normales. Una tasa no nula sostenida puede indicar que el nodo está conectado a un peer obsoleto o mal configurado.
+Isolated spikes are normal. A sustained non-zero rate may indicate the node is peered with a stale or misconfigured peer.
 
 ---
 
@@ -132,141 +132,141 @@ Picos aislados son normales. Una tasa no nula sostenida puede indicar que el nod
 
 ### `TxPool — Tracked TXs & Addresses`
 
-**Métricas Prometheus:**
+**Prometheus metrics:**
 - `monad_bft_txpool_pool_tracked_txs`
 - `monad_bft_txpool_pool_tracked_addresses`
 
-| Campo | Valor |
+| Field | Value |
 |---|---|
-| Tipo | Gauge |
-| Unidad | transacciones / direcciones |
+| Type | Gauge |
+| Unit | transactions / addresses |
 
-Muestra el estado actual del mempool: cuántas transacciones están en cola y desde cuántas direcciones únicas provienen. Si el número de TXs crece sin parar, el nodo no está procesando bloques a la misma velocidad que llegan las transacciones.
+The current state of the mempool: how many transactions are queued and from how many unique sender addresses. If the TX count keeps growing without stabilizing, the node is not processing blocks fast enough to keep up with incoming transaction volume.
 
 ---
 
 ### `TxPool — Drop Reasons (rate)`
 
-**Métricas Prometheus:**
+**Prometheus metrics:**
 - `monad_bft_txpool_pool_drop_fee_too_low`
 - `monad_bft_txpool_pool_drop_pool_full`
 - `monad_bft_txpool_pool_drop_nonce_too_low`
 - `monad_bft_txpool_pool_drop_insufficient_balance`
 - `monad_bft_txpool_pool_drop_invalid_signature`
 
-| Campo | Valor |
+| Field | Value |
 |---|---|
-| Tipo | Counter (tasa a 5m) |
-| Unidad | drops/s |
+| Type | Counter (5m rate) |
+| Unit | drops/s |
 
-Transacciones rechazadas antes de entrar al mempool, clasificadas por motivo:
+Transactions rejected before entering the mempool, broken down by reason:
 
-- **fee_too_low:** La comisión de gas es inferior al mínimo aceptado por el pool.
-- **pool_full:** El mempool está lleno — la TX más nueva se descarta para dejar sitio.
-- **nonce_too_low:** El nonce ya fue usado (transacción obsoleta o repetida).
-- **insufficient_balance:** El saldo del remitente no cubre el valor + gas de la transacción.
-- **invalid_signature:** La firma ECDSA es inválida — transacción malformada o manipulada.
+- **fee_too_low:** Gas fee is below the pool's minimum threshold.
+- **pool_full:** Mempool is at capacity — the incoming transaction is discarded to make room.
+- **nonce_too_low:** The nonce has already been used (stale or duplicate transaction).
+- **insufficient_balance:** The sender's balance cannot cover value + gas.
+- **invalid_signature:** Invalid ECDSA signature — likely a malformed or tampered transaction.
 
-`fee_too_low` y `nonce_too_low` son los más habituales en actividad normal de testnet.
+`fee_too_low` and `nonce_too_low` are the most common under normal testnet activity.
 
 ---
 
-## 🌐 Peers y Red
+## 🌐 Peers & Network
 
 ---
 
 ### `Peers`
 
-**Métrica Prometheus:** `monad_peer_disc_num_peers`
+**Prometheus metric:** `monad_peer_disc_num_peers`
 
-| Campo | Valor |
+| Field | Value |
 |---|---|
-| Tipo | Gauge |
-| Unidad | peers |
+| Type | Gauge |
+| Unit | peers |
 
-Número total de peers conocidos por la capa de descubrimiento. Un nodo completo saludable debería ver entre **100 y 300+ peers** en testnet. Una caída a 0 indica un fallo de red o de descubrimiento de peers.
+Total number of peers known to the peer discovery layer. A healthy full node should see between **100 and 300+ peers** on testnet. A drop to 0 indicates a network or peer discovery failure.
 
 ---
 
 ### `Upstream Validators`
 
-**Métrica Prometheus:** `monad_peer_disc_num_upstream_validators`
+**Prometheus metric:** `monad_peer_disc_num_upstream_validators`
 
-| Campo | Valor |
+| Field | Value |
 |---|---|
-| Tipo | Gauge |
-| Unidad | validadores |
+| Type | Gauge |
+| Unit | validators |
 
-Número de validadores activos a los que el nodo está conectado para recibir bloques. Se necesita **al menos 1** para que el nodo reciba propuestas de bloque. Los valores habituales oscilan entre 2 y 5.
+Number of active upstream validators the node is connected to for receiving blocks. At least **1** is required for the node to receive block proposals. Typical values are between 2 and 5.
 
 ---
 
 ### `Peer Discovery — Ping/Pong`
 
-**Métricas Prometheus:**
-- `monad_peer_disc_send_ping` → Pings enviados/s
-- `monad_peer_disc_recv_pong` → Pongs recibidos/s
+**Prometheus metrics:**
+- `monad_peer_disc_send_ping` → Pings sent/s
+- `monad_peer_disc_recv_pong` → Pongs received/s
 - `monad_peer_disc_ping_timeout` → Timeouts/s
 
-| Campo | Valor |
+| Field | Value |
 |---|---|
-| Tipo | Counter (tasa) |
-| Unidad | mensajes/s |
+| Type | Counter (rate) |
+| Unit | messages/s |
 
-Muestra la salud de la comunicación con los peers. Las tasas de ping enviado y pong recibido deben ser similares — una diferencia grande indica peers que no responden. La tasa de timeouts debe ser baja; un valor sostenido alto sugiere problemas de conectividad.
+Health of peer communication. The ping sent and pong received rates should be close to each other — a large gap indicates peers that are not responding. The timeout rate should stay low; a sustained high value suggests connectivity problems.
 
 ---
 
-## 📡 RaptorCast y WireAuth
+## 📡 RaptorCast & WireAuth
 
 ---
 
 ### `RaptorCast — UDP Broadcast Latency p99`
 
-**Métrica Prometheus:** `monad_bft_raptorcast_udp_secondary_broadcast_latency_p99_ms`
+**Prometheus metric:** `monad_bft_raptorcast_udp_secondary_broadcast_latency_p99_ms`
 
-| Campo | Valor |
+| Field | Value |
 |---|---|
-| Tipo | Gauge |
-| Unidad | milisegundos |
+| Type | Gauge |
+| Unit | milliseconds |
 
-Latencia en el percentil 99 del broadcast UDP de RaptorCast, el protocolo de propagación de bloques de Monad basado en erasure coding. Refleja el peor caso de rendimiento en la difusión de bloques por UDP. Valores por debajo de **300 ms** son normales en testnet.
+The p99 latency of RaptorCast's UDP broadcast path. RaptorCast is Monad's erasure-coding-based block propagation protocol. This value reflects the worst-case UDP broadcast performance. Values under **300 ms** are normal on testnet.
 
 ---
 
 ### `UDP Bytes — Authenticated vs Non-Authenticated`
 
-**Métricas Prometheus:**
-- `monad_raptorcast_auth_authenticated_udp_bytes_read` → bytes autenticados leídos/s
-- `monad_raptorcast_auth_authenticated_udp_bytes_written` → bytes autenticados escritos/s
-- `monad_raptorcast_auth_non_authenticated_udp_bytes_read` → bytes no autenticados leídos/s
+**Prometheus metrics:**
+- `monad_raptorcast_auth_authenticated_udp_bytes_read` → authenticated bytes read/s
+- `monad_raptorcast_auth_authenticated_udp_bytes_written` → authenticated bytes written/s
+- `monad_raptorcast_auth_non_authenticated_udp_bytes_read` → non-authenticated bytes read/s
 
-| Campo | Valor |
+| Field | Value |
 |---|---|
-| Tipo | Counter (tasa) |
-| Unidad | bytes/s |
+| Type | Counter (rate) |
+| Unit | bytes/s |
 
-Volumen de tráfico UDP desglosado por autenticación. Los canales autenticados transportan los payloads de bloques desde validadores conocidos. Los no autenticados corresponden al descubrimiento de peers y broadcast general.
+UDP traffic volume split by authentication status. Authenticated channels carry block payloads from known validators. Non-authenticated traffic covers peer discovery and general broadcast.
 
 ---
 
 ### `WireAuth Sessions`
 
-**Métricas Prometheus:**
+**Prometheus metrics:**
 - `monad_wireauth_udp_state_total_sessions`
 - `monad_wireauth_udp_state_transport_sessions`
 - `monad_wireauth_udp_state_initiating_sessions`
 
-| Campo | Valor |
+| Field | Value |
 |---|---|
-| Tipo | Gauge |
-| Unidad | sesiones |
+| Type | Gauge |
+| Unit | sessions |
 
-Estado de las sesiones WireAuth (protocolo de autenticación UDP del nodo):
+State of the node's WireAuth UDP sessions (the authenticated transport layer):
 
-- **total_sessions:** Todas las sesiones conocidas, en cualquier estado.
-- **transport_sessions:** Sesiones que completaron el handshake y están activas — este es el valor útil.
-- **initiating_sessions:** Sesiones en proceso de handshake. Un valor persistentemente alto respecto a `transport_sessions` puede indicar fallos de handshake con los peers.
+- **total_sessions:** All known sessions regardless of state.
+- **transport_sessions:** Sessions that completed the handshake and are actively transferring data — this is the meaningful value.
+- **initiating_sessions:** Sessions currently in the handshake phase. A persistently high value relative to `transport_sessions` may indicate handshake failures with peers.
 
 ---
 
@@ -276,132 +276,132 @@ Estado de las sesiones WireAuth (protocolo de autenticación UDP del nodo):
 
 ### `RPC — Active Requests`
 
-**Métrica Prometheus:** `monad_rpc_active_requests`
+**Prometheus metric:** `monad_rpc_active_requests`
 
-| Campo | Valor |
+| Field | Value |
 |---|---|
-| Tipo | Gauge |
-| Unidad | peticiones |
+| Type | Gauge |
+| Unit | requests |
 
-Número de peticiones RPC procesándose en este momento. Los picos son normales bajo alta carga; un valor alto sostenido puede indicar respuestas lentas del upstream.
+Number of RPC requests currently being processed. Spikes are expected under heavy query load; a sustained high value may indicate slow upstream responses.
 
 ---
 
 ### `RPC — Request Duration (avg)`
 
-**Métricas Prometheus:**
-- `monad_rpc_request_duration_seconds_sum` / `_count` → Duración media total de la petición (s)
-- `monad_rpc_execution_duration_seconds_sum` / `_count` → Duración media en la capa de ejecución (s)
+**Prometheus metrics:**
+- `monad_rpc_request_duration_seconds_sum` / `_count` → avg total request duration (s)
+- `monad_rpc_execution_duration_seconds_sum` / `_count` → avg execution layer duration (s)
 
-| Campo | Valor |
+| Field | Value |
 |---|---|
-| Tipo | Counter (ratio de tasas) |
-| Unidad | segundos |
+| Type | Counter (rate ratio) |
+| Unit | seconds |
 
-Latencia media de las peticiones RPC. Se muestran dos valores:
-- **Request duration:** Tiempo total desde que llega la petición hasta que se envía la respuesta.
-- **Execution duration:** Porción de ese tiempo gastada en la capa de ejecución. La diferencia entre ambos representa el overhead de red y serialización del servidor RPC.
+Average latency of RPC requests, shown as two values:
+- **Request duration:** Total time from when the request arrives to when the response is sent.
+- **Execution duration:** The portion of that time spent in the execution layer. The difference between the two represents networking and serialization overhead in the RPC server.
 
 ---
 
-## 🔄 Statesync y BlockSync
+## 🔄 Statesync & BlockSync
 
 ---
 
 ### `Statesync Progress`
 
-**Métricas Prometheus:**
-- `monad_statesync_progress_estimate` → bloque actual de sync
-- `monad_statesync_last_target` → bloque objetivo de sync
+**Prometheus metrics:**
+- `monad_statesync_progress_estimate` → current sync block
+- `monad_statesync_last_target` → target sync block
 
-| Campo | Valor |
+| Field | Value |
 |---|---|
-| Tipo | Gauge |
-| Unidad | número de bloque → porcentaje en Grafana |
+| Type | Gauge |
+| Unit | block number → displayed as percentage in Grafana |
 
-Progreso de la sincronización inicial. Grafana calcula `(progreso / objetivo) * 100` para mostrar el porcentaje completado. Solo es relevante cuando el nodo está en modo `SYNCING`.
+Progress of the initial sync. Grafana computes `(progress / target) * 100` to show the percentage completed. Only relevant while the node is in `SYNCING` mode.
 
 ---
 
 ### `BlockSync — Payload Requests`
 
-**Métricas Prometheus:**
+**Prometheus metrics:**
 - `monad_state_blocksync_events_payload_response_successful` → OK/s
-- `monad_state_blocksync_events_payload_response_failed` → fallos/s
+- `monad_state_blocksync_events_payload_response_failed` → failures/s
 - `monad_state_blocksync_events_request_timeout` → timeouts/s
 
-| Campo | Valor |
+| Field | Value |
 |---|---|
-| Tipo | Counter (tasa) |
-| Unidad | respuestas/s |
+| Type | Counter (rate) |
+| Unit | responses/s |
 
-Salud del proceso de descarga de bloques durante el blocksync. La mayor parte de respuestas deben ser exitosas. Una tasa sostenida de fallos o timeouts durante la operación normal (no durante sync) puede indicar peers con problemas de conectividad o sobrecarga en el upstream.
+Health of the block download process during blocksync. Most responses should be successful. A sustained rate of failures or timeouts during normal operation (outside of sync) may indicate peer connectivity issues or an overloaded upstream.
 
 ---
 
-## ⏱ Ciclo de Vida del Nodo
+## ⏱ Node Lifecycle
 
 ---
 
 ### `Uptime`
 
-**Métrica Prometheus:** `monad_total_uptime_us`
+**Prometheus metric:** `monad_total_uptime_us`
 
-| Campo | Valor |
+| Field | Value |
 |---|---|
-| Tipo | Counter |
-| Unidad | microsegundos → segundos en Grafana (÷ 1 000 000) |
+| Type | Counter |
+| Unit | microseconds → seconds in Grafana (÷ 1,000,000) |
 
-Tiempo total que lleva en ejecución el proceso del nodo desde el último arranque. Se resetea a 0 en cada reinicio del servicio, lo que permite detectar reinicios inesperados — si el valor baja de golpe, el nodo se reinició.
+Total time the node process has been running since its last start. Resets to 0 on every service restart, making it easy to detect unexpected restarts — a sudden drop in this value means the node restarted.
 
 ---
 
-## PromQL — Referencia rápida
+## PromQL Quick Reference
 
 ```promql
-# Estado del nodo (LIVE=1 / SYNCING=0)
+# Node status (LIVE=1 / SYNCING=0)
 1 - monad_statesync_syncing{job="monad_full_Cumulo-1"}
 
-# Altura de bloque
+# Block height
 monad_execution_ledger_block_num{job="monad_full_Cumulo-1"}
 
-# Bloques por segundo
+# Block throughput
 rate(monad_state_consensus_events_commit_block{job="monad_full_Cumulo-1"}[1m])
 
-# Transacciones por segundo
+# TX throughput
 rate(monad_execution_ledger_num_tx_commits{job="monad_full_Cumulo-1"}[1m])
 
 # Vote delay p99
 monad_state_vote_delay_ready_after_timer_start_p99_ms{job="monad_full_Cumulo-1"}
 
-# Peers conectados
+# Peers connected
 monad_peer_disc_num_peers{job="monad_full_Cumulo-1"}
 
-# Tamaño del mempool
+# Mempool size
 monad_bft_txpool_pool_tracked_txs{job="monad_full_Cumulo-1"}
 
-# Tasa de drops del mempool (todos los motivos)
+# TX drop rate (all reasons)
 rate(monad_bft_txpool_pool_drop_fee_too_low{job="monad_full_Cumulo-1"}[5m])
 + rate(monad_bft_txpool_pool_drop_pool_full{job="monad_full_Cumulo-1"}[5m])
 + rate(monad_bft_txpool_pool_drop_nonce_too_low{job="monad_full_Cumulo-1"}[5m])
 + rate(monad_bft_txpool_pool_drop_insufficient_balance{job="monad_full_Cumulo-1"}[5m])
 + rate(monad_bft_txpool_pool_drop_invalid_signature{job="monad_full_Cumulo-1"}[5m])
 
-# Latencia media RPC
+# RPC avg latency
 rate(monad_rpc_request_duration_seconds_sum{job="monad_full_Cumulo-1"}[5m])
 / rate(monad_rpc_request_duration_seconds_count{job="monad_full_Cumulo-1"}[5m])
 
-# Progreso de sync (%)
+# Sync progress (%)
 (monad_statesync_progress_estimate{job="monad_full_Cumulo-1"}
 / monad_statesync_last_target{job="monad_full_Cumulo-1"}) * 100
 
-# Uptime (segundos)
+# Uptime (seconds)
 monad_total_uptime_us{job="monad_full_Cumulo-1"} / 1000000
 ```
 
 ---
 
-## Referencias
+## References
 
 - [Monad Node Operations Docs](https://docs.monad.xyz/node-ops)
 - [OTEL Collector](https://opentelemetry.io/docs/collector/)
