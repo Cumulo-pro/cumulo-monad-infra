@@ -21,7 +21,7 @@
 
 ---
 
-### Panel Grafana: `Node Status`
+### `Node Status`
 
 **Métrica Prometheus:** `monad_statesync_syncing`
 
@@ -34,7 +34,7 @@ El nodo tiene dos estados posibles: **LIVE** (operando con normalidad, valor `0`
 
 ---
 
-### Panel Grafana: `Block Height`
+### `Block Height`
 
 **Métrica Prometheus:** `monad_execution_ledger_block_num`
 
@@ -47,7 +47,7 @@ Número del último bloque procesado por la capa de ejecución. Debe subir de fo
 
 ---
 
-### Panel Grafana: `Block Commits & TX Commits (rate)`
+### `Block Commits & TX Commits (rate)`
 
 **Métricas Prometheus:**
 - `monad_state_consensus_events_commit_block` → Bloques/s
@@ -62,7 +62,7 @@ Muestra el ritmo al que el nodo está procesando bloques y transacciones. En con
 
 ---
 
-### Panel Grafana: `Vote Delay (p50 / p90 / p99)`
+### `Vote Delay (p50 / p90 / p99)`
 
 **Métricas Prometheus:**
 - `monad_state_vote_delay_ready_after_timer_start_p50_ms`
@@ -82,7 +82,7 @@ Tiempo que tarda el nodo en estar listo para votar desde que arranca el temporiz
 
 ---
 
-### Panel Grafana: `QC / TC / NEC Created (rate)`
+### `QC / TC / NEC Created (rate)`
 
 **Métricas Prometheus:**
 - `monad_state_consensus_events_created_qc` → QC/s
@@ -102,7 +102,7 @@ Tres tipos de certificados de consenso:
 
 ---
 
-### Panel Grafana: `Validation Errors (rate)`
+### `Validation Errors (rate)`
 
 **Métricas Prometheus:**
 - `monad_state_validation_errors_invalid_signature`
@@ -130,7 +130,7 @@ Picos aislados son normales. Una tasa no nula sostenida puede indicar que el nod
 
 ---
 
-### Panel Grafana: `TxPool — Tracked TXs & Addresses`
+### `TxPool — Tracked TXs & Addresses`
 
 **Métricas Prometheus:**
 - `monad_bft_txpool_pool_tracked_txs`
@@ -145,7 +145,7 @@ Muestra el estado actual del mempool: cuántas transacciones están en cola y de
 
 ---
 
-### Panel Grafana: `TxPool — Drop Reasons (rate)`
+### `TxPool — Drop Reasons (rate)`
 
 **Métricas Prometheus:**
 - `monad_bft_txpool_pool_drop_fee_too_low`
@@ -175,7 +175,7 @@ Transacciones rechazadas antes de entrar al mempool, clasificadas por motivo:
 
 ---
 
-### Panel Grafana: `Peers`
+### `Peers`
 
 **Métrica Prometheus:** `monad_peer_disc_num_peers`
 
@@ -188,7 +188,7 @@ Número total de peers conocidos por la capa de descubrimiento. Un nodo completo
 
 ---
 
-### Panel Grafana: `Upstream Validators`
+### `Upstream Validators`
 
 **Métrica Prometheus:** `monad_peer_disc_num_upstream_validators`
 
@@ -201,7 +201,7 @@ Número de validadores activos a los que el nodo está conectado para recibir bl
 
 ---
 
-### Panel Grafana: `Peer Discovery — Ping/Pong`
+### `Peer Discovery — Ping/Pong`
 
 **Métricas Prometheus:**
 - `monad_peer_disc_send_ping` → Pings enviados/s
@@ -221,7 +221,7 @@ Muestra la salud de la comunicación con los peers. Las tasas de ping enviado y 
 
 ---
 
-### Panel Grafana: `RaptorCast — UDP Broadcast Latency p99`
+### `RaptorCast — UDP Broadcast Latency p99`
 
 **Métrica Prometheus:** `monad_bft_raptorcast_udp_secondary_broadcast_latency_p99_ms`
 
@@ -234,7 +234,7 @@ Latencia en el percentil 99 del broadcast UDP de RaptorCast, el protocolo de pro
 
 ---
 
-### Panel Grafana: `UDP Bytes — Authenticated vs Non-Authenticated`
+### `UDP Bytes — Authenticated vs Non-Authenticated`
 
 **Métricas Prometheus:**
 - `monad_raptorcast_auth_authenticated_udp_bytes_read` → bytes autenticados leídos/s
@@ -250,7 +250,7 @@ Volumen de tráfico UDP desglosado por autenticación. Los canales autenticados 
 
 ---
 
-### Panel Grafana: `WireAuth Sessions`
+### `WireAuth Sessions`
 
 **Métricas Prometheus:**
 - `monad_wireauth_udp_state_total_sessions`
@@ -274,7 +274,7 @@ Estado de las sesiones WireAuth (protocolo de autenticación UDP del nodo):
 
 ---
 
-### Panel Grafana: `RPC — Active Requests`
+### `RPC — Active Requests`
 
 **Métrica Prometheus:** `monad_rpc_active_requests`
 
@@ -287,7 +287,7 @@ Número de peticiones RPC procesándose en este momento. Los picos son normales 
 
 ---
 
-### Panel Grafana: `RPC — Request Duration (avg)`
+### `RPC — Request Duration (avg)`
 
 **Métricas Prometheus:**
 - `monad_rpc_request_duration_seconds_sum` / `_count` → Duración media total de la petición (s)
@@ -308,7 +308,7 @@ Latencia media de las peticiones RPC. Se muestran dos valores:
 
 ---
 
-### Panel Grafana: `Statesync Progress`
+### `Statesync Progress`
 
 **Métricas Prometheus:**
 - `monad_statesync_progress_estimate` → bloque actual de sync
@@ -323,7 +323,7 @@ Progreso de la sincronización inicial. Grafana calcula `(progreso / objetivo) *
 
 ---
 
-### Panel Grafana: `BlockSync — Payload Requests`
+### `BlockSync — Payload Requests`
 
 **Métricas Prometheus:**
 - `monad_state_blocksync_events_payload_response_successful` → OK/s
@@ -343,7 +343,7 @@ Salud del proceso de descarga de bloques durante el blocksync. La mayor parte de
 
 ---
 
-### Panel Grafana: `Uptime`
+### `Uptime`
 
 **Métrica Prometheus:** `monad_total_uptime_us`
 
