@@ -18,6 +18,9 @@ Real-time node metrics available at:
 
 Updates every 30 seconds via a systemd timer push from the node.
 
+Grafana dashboard (Prometheus-based, 19 panels):  
+**[grafana/monad-grafana-dashboard-multinode.json](grafana/monad-grafana-dashboard-multinode.json)**
+
 ## Documentation
 
 | Doc | Description |
@@ -25,6 +28,23 @@ Updates every 30 seconds via a systemd timer push from the node.
 | [01 — Validator setup](docs/01-validator-setup.md) | Hardware provisioning, disk layout, OS config, TrieDB init |
 | [02 — Full node installation](docs/02-fullnode-installation.md) | Dependencies, firewall, keystore generation, snapshot import, sync |
 | [03 — Node monitoring](docs/03-monad-node-monitoring.md) | Monitoring stack: monad-status, push pipeline, PHP receiver, public dashboard |
+| [04 — Grafana & Prometheus](docs/04-grafana-prometheus.md) | Prometheus scrape setup, firewall config, Grafana dashboard import |
+| [05 — Metrics reference](docs/05-monad-metrics-reference.md) | All Prometheus metrics exposed by the node, mapped to Grafana panels |
+
+## Repository Structure
+
+```
+cumulo-monad-infra/
+├── docs/
+│   ├── 01-validator-setup.md
+│   ├── 02-fullnode-installation.md
+│   ├── 03-monad-node-monitoring.md
+│   ├── 04-grafana-prometheus.md
+│   └── 05-monad-metrics-reference.md
+├── grafana/
+│   └── monad-grafana-dashboard-multinode.json
+└── README.md
+```
 
 ## Status
 
