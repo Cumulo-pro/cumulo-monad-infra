@@ -119,7 +119,7 @@
     "name": "Chorus One",
     "x": "chorus_one",
     "webservices": "https://chorus.one",
-    "validatorlogo": "",
+    "validatorlogo": "chorusone.jpg",
     "tools": "Ledger Metrics Prometheus Exporter",
     "tools_url": {
       "Ledger Metrics Prometheus Exporter": "https://github.com/ChorusOne/monad-ledger-metrics"
@@ -129,7 +129,7 @@
     "name": "Staking4all",
     "x": "staking4all",
     "webservices": "https://staking4all.org",
-    "validatorlogo": "",
+    "validatorlogo": "staking4all.jpg",
     "tools": "Grafana & Prometheus Monitoring",
     "tools_url": {
       "Grafana & Prometheus Monitoring": "https://github.com/staking4all/monad-monitoring"
@@ -148,7 +148,7 @@
   },
   {
     "name": "Laminated Labs",
-    "validatorlogo": "",
+    "validatorlogo": "laminatedlabs.jpg",
     "tools": "Monad Helm Chart",
     "tools_url": {
       "Monad Helm Chart": "https://github.com/laminated-labs/monad-helm"
@@ -182,9 +182,5 @@
     "x": "silknodes",
     "webservices": "https://silknodes.io",
     "validatorlogo": "silk_nodes.jpg"
-  },
-  {
-    "name": "H2O Nodes",
-    "validatorlogo": ""
   }
 ]
