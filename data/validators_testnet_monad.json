@@ -3,7 +3,7 @@
     "name": "Huginn",
     "x": "huginn_tech",
     "webservices": "https://monval.huginn.tech",
-    "validatorlogo": "",
+    "validatorlogo": "huginntech.jpg",
     "evm-rpc": "https://monad-testnet-rpc.huginn.tech",
     "wss_evm": "wss://wss.monad-testnet-rpc.huginn.tech",
     "snapshot": "https://monval.huginn.tech/network/snapshots/testnet",
@@ -17,7 +17,7 @@
     "name": "Tenderly",
     "x": "TenderlyApp",
     "webservices": "https://tenderly.co",
-    "validatorlogo": "",
+    "validatorlogo": "tenderlyapp.png",
     "evm-rpc": "https://monad-testnet.gateway.tenderly.co",
     "wss_evm": "wss://monad-testnet.gateway.tenderly.co",
     "explorer": "https://dashboard.tenderly.co/explorer/monad-testnet"
@@ -26,7 +26,7 @@
     "name": "DRPC",
     "x": "drpcorg",
     "webservices": "https://drpc.org",
-    "validatorlogo": "",
+    "validatorlogo": "drpc.png",
     "evm-rpc": "https://monad-testnet.drpc.org",
     "wss_evm": "wss://monad-testnet.drpc.org"
   },
@@ -34,7 +34,7 @@
     "name": "QuickNode",
     "x": "QuickNode",
     "webservices": "https://quicknode.com",
-    "validatorlogo": "",
+    "validatorlogo": "quicknode.jpg",
     "evm-rpc": "https://testnet-rpc.monad.xyz",
     "wss_evm": "wss://testnet-rpc.monad.xyz"
   },
