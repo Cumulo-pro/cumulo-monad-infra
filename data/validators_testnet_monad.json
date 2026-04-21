@@ -1,6 +1,7 @@
 [
   {
     "name": "Huginn",
+    "type": "validator",
     "x": "huginn_tech",
     "webservices": "https://monval.huginn.tech",
     "validatorlogo": "huginntech.jpg",
@@ -15,6 +16,7 @@
   },
   {
     "name": "Tenderly",
+    "type": "infra",
     "x": "TenderlyApp",
     "webservices": "https://tenderly.co",
     "validatorlogo": "tenderlyapp.png",
@@ -24,6 +26,7 @@
   },
   {
     "name": "DRPC",
+    "type": "infra",
     "x": "drpcorg",
     "webservices": "https://drpc.org",
     "validatorlogo": "drpc.png",
@@ -32,6 +35,7 @@
   },
   {
     "name": "QuickNode",
+    "type": "infra",
     "x": "QuickNode",
     "webservices": "https://quicknode.com",
     "validatorlogo": "quicknode.jpg",
@@ -40,6 +44,7 @@
   },
   {
     "name": "Thirdweb",
+    "type": "infra",
     "x": "thirdweb",
     "webservices": "https://thirdweb.com",
     "validatorlogo": "thirdweb.jpg",
@@ -47,6 +52,7 @@
   },
   {
     "name": "Ankr",
+    "type": "infra",
     "x": "ankr",
     "webservices": "https://ankr.com",
     "validatorlogo": "ankr.jpg",
@@ -54,6 +60,7 @@
   },
   {
     "name": "Tatum",
+    "type": "infra",
     "x": "tatum_io",
     "webservices": "https://tatum.io",
     "validatorlogo": "tatum.jpg",
@@ -61,6 +68,7 @@
   },
   {
     "name": "MonadVision",
+    "type": "infra",
     "x": "monadVision",
     "webservices": "https://testnet.monadvision.com",
     "validatorlogo": "",
@@ -68,6 +76,7 @@
   },
   {
     "name": "Hoodscan",
+    "type": "infra",
     "x": "hoodscan_io",
     "webservices": "https://testnet.monad.hoodscan.io",
     "validatorlogo": "hoodrunio.jpg",
@@ -75,6 +84,7 @@
   },
   {
     "name": "ITRocket",
+    "type": "validator",
     "x": "itrocket_team",
     "webservices": "https://itrocket.net",
     "validatorlogo": "itrocket.png",
@@ -86,6 +96,7 @@
   },
   {
     "name": "MonadScan",
+    "type": "infra",
     "x": "monadscan",
     "webservices": "https://itrocket.net/services/testnet/monad/",
     "validatorlogo": "",
@@ -93,6 +104,7 @@
   },
   {
     "name": "SocialScan",
+    "type": "infra",
     "x": "SocialScanCom",
     "webservices": "https://monad-testnet.socialscan.io",
     "validatorlogo": "",
@@ -100,6 +112,7 @@
   },
   {
     "name": "Gmonads",
+    "type": "infra",
     "x": "gmonads",
     "webservices": "https://testnet2.gmonads.com",
     "validatorlogo": "",
@@ -107,6 +120,7 @@
   },
   {
     "name": "Cosmostation",
+    "type": "validator",
     "x": "cosmostation",
     "webservices": "https://cosmostation.io",
     "validatorlogo": "cosmostation.png",
@@ -117,6 +131,7 @@
   },
   {
     "name": "Chorus One",
+    "type": "validator",
     "x": "chorus_one",
     "webservices": "https://chorus.one",
     "validatorlogo": "chorusone.jpg",
@@ -127,6 +142,7 @@
   },
   {
     "name": "Staking4all",
+    "type": "validator",
     "x": "staking4all",
     "webservices": "https://staking4all.org",
     "validatorlogo": "staking4all.jpg",
@@ -137,6 +153,7 @@
   },
   {
     "name": "B-Harvest",
+    "type": "validator",
     "x": "bharvest_io",
     "webservices": "https://bharvest.io",
     "validatorlogo": "bharvest.jpg",
@@ -148,6 +165,7 @@
   },
   {
     "name": "Laminated Labs",
+    "type": "validator",
     "validatorlogo": "laminatedlabs.jpg",
     "tools": "Monad Helm Chart",
     "tools_url": {
@@ -156,6 +174,7 @@
   },
   {
     "name": "STAKEME",
+    "type": "validator",
     "x": "stakeme_pro",
     "webservices": "https://monad.exploreme.pro",
     "validatorlogo": "stakeme.jpg",
@@ -167,18 +186,21 @@
   },
   {
     "name": "Triton One",
+    "type": "validator",
     "x": "TritonOne",
     "webservices": "https://triton.one",
     "validatorlogo": ""
   },
   {
     "name": "Everstake",
+    "type": "validator",
     "x": "everstake_one",
     "webservices": "https://everstake.one",
     "validatorlogo": ""
   },
   {
     "name": "Silk Nodes",
+    "type": "validator",
     "x": "silknodes",
     "webservices": "https://silknodes.io",
     "validatorlogo": "silk_nodes.jpg"
