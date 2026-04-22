@@ -1,4 +1,4 @@
-# Monad Testnet — Node Monitoring Dashboard
+# Monad Testnet - Node Monitoring Dashboard
 
 > Part of Cumulo's Monad testnet full node infrastructure documentation.  
 > Covers the complete monitoring stack: data collection, push pipeline, and public dashboard.
@@ -11,11 +11,11 @@ This document describes the monitoring setup implemented for `full_Cumulo-1`, Cu
 
 ### Design principles
 
-- **No external monitoring services** — self-hosted, no Grafana Cloud, no Datadog
-- **Pull-friendly source** — uses `monad-status`, the official Monad node status script
-- **Minimal footprint** — a bash script, a PHP receiver, and a PHP dashboard page
-- **Public** — no authentication required to view the dashboard
-- **Resilient** — systemd timer ensures continuous push even after reboots
+- **No external monitoring services** - self-hosted, no Grafana Cloud, no Datadog
+- **Pull-friendly source** - uses `monad-status`, the official Monad node status script
+- **Minimal footprint** - a bash script, a PHP receiver, and a PHP dashboard page
+- **Public** - no authentication required to view the dashboard
+- **Resilient** - systemd timer ensures continuous push even after reboots
 
 ---
 
@@ -53,7 +53,7 @@ This document describes the monitoring setup implemented for `full_Cumulo-1`, Cu
 
 ---
 
-## Step 1 — Install `monad-status`
+## Step 1 - Install `monad-status`
 
 `monad-status` is the official Monad Foundation script that outputs a structured summary of node health in a single call.
 
@@ -73,7 +73,7 @@ Expected output includes consensus status, block height, epoch, round, services,
 
 ---
 
-## Step 2 — Generate a shared secret token
+## Step 2 - Generate a shared secret token
 
 The push script and PHP receiver share a secret token for authentication. Generate a strong random token:
 
@@ -81,13 +81,13 @@ The push script and PHP receiver share a secret token for authentication. Genera
 openssl rand -base64 32
 ```
 
-Save this value — you will need it in both the push script (Step 3) and the PHP receiver (Step 4).
+Save this value - you will need it in both the push script (Step 3) and the PHP receiver (Step 4).
 
 > ⚠️ Never commit this token to a public repository. Store it in a secrets manager or environment variable.
 
 ---
 
-## Step 3 — Push script
+## Step 3 - Push script
 
 Create the push script on the node at `/usr/local/bin/monad-push-metrics.sh`:
 
@@ -185,7 +185,7 @@ sudo /usr/local/bin/monad-push-metrics.sh
 
 ---
 
-## Step 4 — systemd service and timer
+## Step 4 - systemd service and timer
 
 Create the service unit at `/etc/systemd/system/monad-push-metrics.service`:
 
@@ -236,7 +236,7 @@ curl -s https://your-domain.com/services/monad_testnet/metrics_cache.json | grep
 
 ---
 
-## Step 5 — PHP receiver
+## Step 5 - PHP receiver
 
 Create `v1/metrics/index.php` on the hosting:
 
@@ -305,7 +305,7 @@ monad_testnet/
 
 ---
 
-## Step 6 — Dashboard
+## Step 6 - Dashboard
 
 `metrics.php` is a PHP page that loads `metrics_cache.json` via JavaScript fetch every 30 seconds and renders the data. It integrates with the existing site layout via `ob_start()` / `include('layout.php')`.
 
@@ -366,13 +366,13 @@ The staleness banner appears after 120 seconds without an update. Check the time
 
 ## Notes and lessons learned
 
-- **OTEL push vs pull**: The original approach was to use the OTEL Collector's `otlphttp` exporter to push metrics directly to the hosting. This was abandoned after extended debugging — shared hosting WAFs consistently blocked OTLP payloads (242KB, `Go-http-client` User-Agent) with HTTP 406 regardless of configuration. The `monad-status` approach is simpler, produces a ~400 byte payload, and avoids all WAF issues.
+- **OTEL push vs pull**: The original approach was to use the OTEL Collector's `otlphttp` exporter to push metrics directly to the hosting. This was abandoned after extended debugging - shared hosting WAFs consistently blocked OTLP payloads (242KB, `Go-http-client` User-Agent) with HTTP 406 regardless of configuration. The `monad-status` approach is simpler, produces a ~400 byte payload, and avoids all WAF issues.
 
 - **monad-status is the right tool**: The official `monad-status` script aggregates all operationally relevant data in a single call — consensus status, block height, epoch, round, services, TrieDB disk usage, statesync, and node config. There is no need to parse raw OTEL metrics for a status dashboard.
 
 - **systemd timer vs cron**: A systemd timer was chosen over cron for consistency with the existing Monad service management pattern and better logging via `journalctl`.
 
-- **Payload size matters on shared hosting**: Even with `compression: none`, the OTEL JSON payload was ~242KB per push. The `monad-status` JSON is ~400 bytes — three orders of magnitude smaller.
+- **Payload size matters on shared hosting**: Even with `compression: none`, the OTEL JSON payload was ~242KB per push. The `monad-status` JSON is ~400 bytes - three orders of magnitude smaller.
 
 - **receiver path**: The PHP receiver must be at `v1/metrics/index.php` (as a directory index), not `v1/metrics.php`. Apache on shared hosting typically does not serve `.php` files at paths without the extension unless `mod_rewrite` is configured.
 
