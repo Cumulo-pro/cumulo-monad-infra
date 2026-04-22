@@ -1,4 +1,4 @@
-# Monad Testnet — CLI Reference
+# Monad Testnet - CLI Reference
 
 > Part of Cumulo's Monad testnet full node infrastructure documentation.  
 > CLI commands organised by category for the day-to-day management of node `full_Cumulo-1`.
@@ -183,7 +183,7 @@ monad-mpt --storage /dev/triedb
 
 ---
 
-## 6. monlog — BFT log analysis
+## 6. monlog - BFT log analysis
 
 > Lightweight tool maintained by Category Labs. Scrapes BFT logs from the last 60 seconds.
 
@@ -227,7 +227,7 @@ watch -d "./monlog"
 
 ---
 
-## 7. ledger-tail — consensus data
+## 7. ledger-tail - consensus data
 
 > Parses ledger artifacts and streams consensus events in JSON format.
 
@@ -304,7 +304,7 @@ monad-bft --help
 
 ---
 
-## 11. Keys — backup and restore
+## 11. Keys - backup and restore
 
 ### Export key backups
 
@@ -330,7 +330,7 @@ monad-keystore recover \
   --key-type bls > /opt/monad/backup/bls-backup
 ```
 
-> ⚠️ These files contain the node's private keys — they define its identity. Store them in an external location (password manager or secrets vault).
+> ⚠️ These files contain the node's private keys - they define its identity. Store them in an external location (password manager or secrets vault).
 
 ### Import keys from backup
 
@@ -366,7 +366,7 @@ monad-keystore import \
 
 ## 12. Node recovery
 
-### Soft Reset (automated — v0.12.1+)
+### Soft Reset (automated - v0.12.1+)
 
 > Use when the node tip is close to the network tip. `monad-bft` auto-fetches configs on startup.
 
@@ -381,7 +381,7 @@ systemctl list-units --type=service monad-bft.service monad-execution.service mo
 journalctl -u monad-bft -f
 ```
 
-### Soft Reset (manual — testnet)
+### Soft Reset (manual - testnet)
 
 ```bash
 # 1. Stop services
@@ -427,7 +427,7 @@ chown monad:monad $VALIDATORS_FILE
 systemctl start monad-bft monad-execution monad-rpc
 ```
 
-### Remote config — environment variables (.env)
+### Remote config - environment variables (.env)
 
 ```bash
 # View configured variables
@@ -479,7 +479,7 @@ sudo ufw status verbose
 
 ---
 
-## Quick reference — common operation sequences
+## Quick reference - common operation sequences
 
 | Situation | Key commands |
 |---|---|
