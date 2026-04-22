@@ -105,9 +105,9 @@
   {
     "name": "SocialScan",
     "type": "infra",
-    "x": "SocialScanCom",
+    "x": "socialscan_io",
     "webservices": "https://monad-testnet.socialscan.io",
-    "validatorlogo": "",
+    "validatorlogo": "socialscan.jpg",
     "explorer": "https://monad-testnet.socialscan.io"
   },
   {
