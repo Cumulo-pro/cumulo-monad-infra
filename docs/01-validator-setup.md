@@ -1,4 +1,4 @@
-# Monad Testnet — Validator Node Setup
+# Monad Testnet - Validator Node Setup
 
 > Documentation of the initial infrastructure setup for a Monad testnet validator node.  
 > Part of Cumulo's validator candidacy process.
@@ -9,10 +9,10 @@
 
 | Component | Spec |
 |---|---|
-| CPU | AMD Ryzen 9 7950X3D — 16 cores / 4.2 GHz base (5.7 GHz Turbo) |
+| CPU | AMD Ryzen 9 7950X3D - 16 cores / 4.2 GHz base (5.7 GHz Turbo) |
 | RAM | 128 GB DDR5 |
 | Storage | 2× 1.92 TB NVMe (Micron 7450 MTFDKCC1T9TFR) — PCIe Gen4 |
-| Network | 1 Gbit/s dedicated — 100 TB/month traffic |
+| Network | 1 Gbit/s dedicated - 100 TB/month traffic |
 | OS | Ubuntu 24.04 LTS |
 | Environment | Bare metal (required by Monad) |
 
@@ -34,7 +34,7 @@
 
 Two physical NVMe drives with dedicated roles, as required by Monad's architecture:
 
-### `nvme0n1` — Operating System + MonadBFT
+### `nvme0n1` - Operating System + MonadBFT
 
 ```
 nvme0n1        1.92 TB
@@ -46,14 +46,14 @@ nvme0n1        1.92 TB
 
 This disk hosts the OS, MonadBFT ledger, config files, and keystores at `/home/monad/`.
 
-### `nvme1n1` — TrieDB (Execution State)
+### `nvme1n1` - TrieDB (Execution State)
 
 ```
 nvme1n1        1.92 TB
 └─ nvme1n1p1   1.92 TB   (no filesystem — raw block device)
 ```
 
-Dedicated exclusively to Monad's TrieDB database. No filesystem is mounted on this partition — Monad writes directly to the block device. Exposed to the system via udev symlink at `/dev/triedb`.
+Dedicated exclusively to Monad's TrieDB database. No filesystem is mounted on this partition - Monad writes directly to the block device. Exposed to the system via udev symlink at `/dev/triedb`.
 
 ---
 
@@ -81,7 +81,7 @@ nvme id-ns -H /dev/nvme1n1 | grep 'LBA Format' | grep 'in use'
 LBA Format  0 : Metadata Size: 0   bytes - Data Size: 512 bytes - Relative Performance: 0x2 Good (in use)
 ```
 
-✅ Already configured correctly — no reformatting needed.
+✅ Already configured correctly - no reformatting needed.
 
 ### 3. Partition the TrieDB disk
 
@@ -162,7 +162,7 @@ Thread(s) per core: 2
 Core(s) per socket: 16
 ```
 
-SMT was active — accessed BIOS via Supermicro IPMI remote console (iKVM/HTML5), navigated to:
+SMT was active - accessed BIOS via Supermicro IPMI remote console (iKVM/HTML5), navigated to:
 
 **Advanced → CPU Configuration → SMT Control → Disabled**
 
@@ -192,7 +192,7 @@ uname -r
 6.8.0-110-generic
 ```
 
-✅ Kernel 6.8.0-110 — well above the minimum required (6.8.0-60).
+✅ Kernel 6.8.0-110 - well above the minimum required (6.8.0-60).
 
 ### 9. Initialize TrieDB with `monad-mpt`
 
@@ -215,7 +215,7 @@ MPT database internal lists:
 monad-mpt.service: Deactivated successfully.
 ```
 
-✅ TrieDB initialized — 1.75 TB available, service completed cleanly.
+✅ TrieDB initialized - 1.75 TB available, service completed cleanly.
 
 ---
 
