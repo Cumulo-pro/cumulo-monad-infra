@@ -183,26 +183,5 @@
     "tools_url": {
       "MonadAI Assistant": "https://monad.exploreme.pro/?lumi=true"
     }
-  },
-  {
-    "name": "Triton One",
-    "type": "validator",
-    "x": "TritonOne",
-    "webservices": "https://triton.one",
-    "validatorlogo": ""
-  },
-  {
-    "name": "Everstake",
-    "type": "validator",
-    "x": "everstake_one",
-    "webservices": "https://everstake.one",
-    "validatorlogo": ""
-  },
-  {
-    "name": "Silk Nodes",
-    "type": "validator",
-    "x": "silknodes",
-    "webservices": "https://silknodes.io",
-    "validatorlogo": "silk_nodes.jpg"
   }
 ]
