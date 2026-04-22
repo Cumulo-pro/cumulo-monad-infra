@@ -1,4 +1,4 @@
-# Monad Testnet — Full Node Installation
+# Monad Testnet - Full Node Installation
 
 > Continuation of [`monad-validator-setup.md`](./monad-validator-setup.md).  
 > Covers full node installation, configuration, snapshot import, and first sync.  
@@ -45,7 +45,7 @@ ufw enable
 ufw status
 ```
 
-Additional iptables rule to drop short UDP packets — improves robustness against spam traffic on the P2P port:
+Additional iptables rule to drop short UDP packets - improves robustness against spam traffic on the P2P port:
 
 ```bash
 iptables -I INPUT -p udp --dport 8000 -m length --length 0:1400 -j DROP
@@ -187,7 +187,7 @@ self_record_seq_num = 1
 self_name_record_sig = "0358853fef23a0f78a9477485da5bc7e090292341ae9adf433c479c5af4660a5334a81cd0a1c8b43b5a19f8c77e638ed51e2f9fc75f705921ff834c3e09641a701"
 ```
 
-The `beneficiary` field is set to the burn address (correct for full nodes — only validators need a reward address):
+The `beneficiary` field is set to the burn address (correct for full nodes - only validators need a reward address):
 
 ```toml
 beneficiary = "0x0000000000000000000000000000000000000000"
