@@ -71,7 +71,7 @@
     "type": "infra",
     "x": "monadVision",
     "webservices": "https://testnet.monadvision.com",
-    "validatorlogo": "",
+    "validatorlogo": "blockvision.jpg",
     "explorer": "https://testnet.monadvision.com"
   },
   {
@@ -98,8 +98,8 @@
     "name": "MonadScan",
     "type": "infra",
     "x": "monadscan",
-    "webservices": "https://itrocket.net/services/testnet/monad/",
-    "validatorlogo": "",
+    "webservices": "",
+    "validatorlogo": "monadscan.jpg",
     "explorer": "https://testnet.monadscan.com"
   },
   {
@@ -115,8 +115,8 @@
     "type": "infra",
     "x": "gmonads",
     "webservices": "https://testnet2.gmonads.com",
-    "validatorlogo": "",
-    "explorer": "https://testnet2.gmonads.com"
+    "validatorlogo": "gmonads.jpg",
+    "explorer": "https://www.gmonads.com/"
   },
   {
     "name": "Cosmostation",
