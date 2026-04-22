@@ -1,4 +1,4 @@
-# Monad Testnet — Metrics Reference
+# Monad Testnet - Metrics Reference
 
 > Reference documentation for all metrics exposed by the Monad node.  
 > Metrics are collected via the OTEL Collector and exposed at `http://0.0.0.0:8889/metrics`.  
@@ -130,7 +130,7 @@ Isolated spikes are normal. A sustained non-zero rate may indicate the node is p
 
 ---
 
-### `TxPool — Tracked TXs & Addresses`
+### `TxPool - Tracked TXs & Addresses`
 
 **Prometheus metrics:**
 - `monad_bft_txpool_pool_tracked_txs`
@@ -145,7 +145,7 @@ The current state of the mempool: how many transactions are queued and from how 
 
 ---
 
-### `TxPool — Drop Reasons (rate)`
+### `TxPool - Drop Reasons (rate)`
 
 **Prometheus metrics:**
 - `monad_bft_txpool_pool_drop_fee_too_low`
@@ -201,7 +201,7 @@ Number of active upstream validators the node is connected to for receiving bloc
 
 ---
 
-### `Peer Discovery — Ping/Pong`
+### `Peer Discovery - Ping/Pong`
 
 **Prometheus metrics:**
 - `monad_peer_disc_send_ping` → Pings sent/s
@@ -221,7 +221,7 @@ Health of peer communication. The ping sent and pong received rates should be cl
 
 ---
 
-### `RaptorCast — UDP Broadcast Latency p99`
+### `RaptorCast - UDP Broadcast Latency p99`
 
 **Prometheus metric:** `monad_bft_raptorcast_udp_secondary_broadcast_latency_p99_ms`
 
@@ -234,7 +234,7 @@ The p99 latency of RaptorCast's UDP broadcast path. RaptorCast is Monad's erasur
 
 ---
 
-### `UDP Bytes — Authenticated vs Non-Authenticated`
+### `UDP Bytes - Authenticated vs Non-Authenticated`
 
 **Prometheus metrics:**
 - `monad_raptorcast_auth_authenticated_udp_bytes_read` → authenticated bytes read/s
@@ -274,7 +274,7 @@ State of the node's WireAuth UDP sessions (the authenticated transport layer):
 
 ---
 
-### `RPC — Active Requests`
+### `RPC - Active Requests`
 
 **Prometheus metric:** `monad_rpc_active_requests`
 
@@ -287,7 +287,7 @@ Number of RPC requests currently being processed. Spikes are expected under heav
 
 ---
 
-### `RPC — Request Duration (avg)`
+### `RPC - Request Duration (avg)`
 
 **Prometheus metrics:**
 - `monad_rpc_request_duration_seconds_sum` / `_count` → avg total request duration (s)
@@ -323,7 +323,7 @@ Progress of the initial sync. Grafana computes `(progress / target) * 100` to sh
 
 ---
 
-### `BlockSync — Payload Requests`
+### `BlockSync - Payload Requests`
 
 **Prometheus metrics:**
 - `monad_state_blocksync_events_payload_response_successful` → OK/s
