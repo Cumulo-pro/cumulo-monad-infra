@@ -1,4 +1,4 @@
-# Monad Testnet — Grafana & Prometheus Monitoring Setup
+# Monad Testnet - Grafana & Prometheus Monitoring Setup
 
 > Documentation of the monitoring stack integration for the Monad full node.  
 > The node already exposes all metrics via the OTEL Collector. This document covers
@@ -36,7 +36,7 @@ No additional exporters or agents are required on the node.
 
 ---
 
-## Step 1 — Open port 8889 on the node
+## Step 1 - Open port 8889 on the node
 
 The OTEL metrics endpoint must be reachable only from the Prometheus server.
 `ufw` was not pre-installed — install it first, then add the rule:
@@ -67,7 +67,7 @@ is exporting correctly.
 
 ---
 
-## Step 2 — Add the Monad job to Prometheus
+## Step 2 - Add the Monad job to Prometheus
 
 On the external Prometheus server, edit `/etc/prometheus/prometheus.yml` and add
 the following job at the end of `scrape_configs`:
@@ -92,7 +92,7 @@ curl -X POST http://localhost:9099/-/reload
 
 ---
 
-## Step 3 — Verify the target is UP
+## Step 3 - Verify the target is UP
 
 Prometheus on this server listens on port `9099`. Check the scrape status:
 
@@ -114,7 +114,7 @@ monad_full_Cumulo-1 -> up
 
 ---
 
-## Step 4 — Import the Grafana dashboard
+## Step 4 - Import the Grafana dashboard
 
 The Cumulo dashboard JSON is available in this repository:
 
