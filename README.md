@@ -30,6 +30,8 @@ Grafana dashboard (Prometheus-based, 19 panels):
 | [03 — Node monitoring](docs/03-monad-node-monitoring.md) | Monitoring stack: monad-status, push pipeline, PHP receiver, public dashboard |
 | [04 — Grafana & Prometheus](docs/04-grafana-prometheus.md) | Prometheus scrape setup, firewall config, Grafana dashboard import |
 | [05 — Metrics reference](docs/05-monad-metrics-reference.md) | All Prometheus metrics exposed by the node, mapped to Grafana panels |
+| [06 — CLI reference](docs/06-cli-reference.md) | CLI commands for day-to-day node management: services, logs, RPC, keys, recovery, upgrades |
+| [07 — Monlog](docs/07-monlog.md) | BFT log analyser: installation, usage, output reference and relation to Prometheus |
 
 ## Repository Structure
 
@@ -40,7 +42,9 @@ cumulo-monad-infra/
 │   ├── 02-fullnode-installation.md
 │   ├── 03-monad-node-monitoring.md
 │   ├── 04-grafana-prometheus.md
-│   └── 05-monad-metrics-reference.md
+│   ├── 05-monad-metrics-reference.md
+│   ├── 06-cli-reference.md
+│   └── 07-monlog.md
 ├── grafana/
 │   └── monad-grafana-dashboard-multinode.json
 └── README.md
