@@ -1,0 +1,186 @@
+[
+  {
+    "name": "Huginn",
+    "type": "validator",
+    "x": "huginn_tech",
+    "webservices": "https://monval.huginn.tech",
+    "validatorlogo": "huginntech.jpg",
+    "evm": "https://monad-rpc.huginn.tech",
+    "wss_evm": "wss://wss.monad-rpc.huginn.tech",
+    "snapshot": "https://monval.huginn.tech/network/snapshots/mainnet",
+    "tools": "Monadoring Dashboard & Alerting, Monadoring Telegram Bot",
+    "tools_url": {
+      "Monadoring Dashboard & Alerting": "https://github.com/Huginn-Tech/monadoring",
+      "Monadoring Telegram Bot": "https://github.com/Huginntech/monadoring-telegram-bot"
+    }
+  },
+  {
+    "name": "Tenderly",
+    "type": "infra",
+    "x": "TenderlyApp",
+    "webservices": "https://tenderly.co",
+    "validatorlogo": "tenderlyapp.png",
+    "evm": "https://monad.gateway.tenderly.co",
+    "wss_evm": "wss://monad.gateway.tenderly.co",
+    "explorer": "https://dashboard.tenderly.co/explorer/monad"
+  },
+  {
+    "name": "QuickNode",
+    "type": "infra",
+    "x": "QuickNode",
+    "webservices": "https://quicknode.com",
+    "validatorlogo": "quicknode.jpg",
+    "evm": "https://rpc.monad.xyz",
+    "wss_evm": "wss://rpc.monad.xyz"
+  },
+  {
+    "name": "Alchemy",
+    "type": "infra",
+    "x": "AlchemyPlatform",
+    "webservices": "https://alchemy.com",
+    "evm": "https://rpc1.monad.xyz",
+    "wss_evm": "wss://rpc1.monad.xyz"
+  },
+  {
+    "name": "Ankr",
+    "type": "infra",
+    "x": "ankr",
+    "webservices": "https://ankr.com",
+    "validatorlogo": "ankr.jpg",
+    "evm": "https://rpc3.monad.xyz",
+    "wss_evm": "wss://rpc3.monad.xyz"
+  },
+  {
+    "name": "MonadVision",
+    "type": "infra",
+    "x": "monadVision",
+    "webservices": "https://monadvision.com",
+    "validatorlogo": "blockvision.jpg",
+    "explorer": "https://monadvision.com"
+  },
+  {
+    "name": "Hoodscan",
+    "type": "infra",
+    "x": "hoodscan_io",
+    "webservices": "https://monad.hoodscan.io",
+    "validatorlogo": "hoodrunio.jpg",
+    "explorer": "https://monad.hoodscan.io"
+  },
+  {
+    "name": "STAKEME",
+    "type": "validator",
+    "x": "stakeme_pro",
+    "webservices": "https://monad.exploreme.pro",
+    "validatorlogo": "stakeme.jpg",
+    "explorer": "https://monad.exploreme.pro",
+    "tools": "MonadAI Assistant",
+    "tools_url": {
+      "MonadAI Assistant": "https://monad.exploreme.pro/?lumi=true"
+    }
+  },
+  {
+    "name": "ITRocket",
+    "type": "validator",
+    "x": "itrocket_team",
+    "webservices": "https://itrocket.net",
+    "validatorlogo": "itrocket.png",
+    "explorer": "https://monad-space.itrocket.net/validators",
+    "tools": "Monad Monitoring Bot",
+    "tools_url": {
+      "Monad Monitoring Bot": "https://t.me/monad_mon_bot"
+    }
+  },
+  {
+    "name": "MonadScan",
+    "type": "infra",
+    "x": "monadscan",
+    "webservices": "https://monadscan.com",
+    "validatorlogo": "monadscan.jpg",
+    "explorer": "https://monadscan.com"
+  },
+  {
+    "name": "SocialScan",
+    "type": "infra",
+    "x": "socialscan_io",
+    "webservices": "https://monad.socialscan.io",
+    "validatorlogo": "socialscan.jpg",
+    "explorer": "https://monad.socialscan.io"
+  },
+  {
+    "name": "Gmonads",
+    "type": "infra",
+    "x": "gmonads",
+    "webservices": "https://gmonads.com",
+    "validatorlogo": "gmonads.jpg",
+    "explorer": "https://gmonads.com"
+  },
+  {
+    "name": "Silk Nodes",
+    "type": "validator",
+    "x": "silknodes",
+    "webservices": "https://silknodes.io",
+    "validatorlogo": "silk_nodes.jpg",
+    "explorer": "https://monad.silknodes.io"
+  },
+  {
+    "name": "StakeCraft",
+    "type": "validator",
+    "x": "StakeCraft_com",
+    "webservices": "https://stakemon.ad",
+    "explorer": "https://stakemon.ad"
+  },
+  {
+    "name": "Cosmostation",
+    "type": "validator",
+    "x": "cosmostation",
+    "webservices": "https://cosmostation.io",
+    "validatorlogo": "cosmostation.png",
+    "tools": "Monad Exporter",
+    "tools_url": {
+      "Monad Exporter": "https://github.com/cosmostation/monad-exporter"
+    }
+  },
+  {
+    "name": "Chorus One",
+    "type": "validator",
+    "x": "chorus_one",
+    "webservices": "https://chorus.one",
+    "validatorlogo": "chorusone.jpg",
+    "tools": "Ledger Metrics Prometheus Exporter",
+    "tools_url": {
+      "Ledger Metrics Prometheus Exporter": "https://github.com/ChorusOne/monad-ledger-metrics"
+    }
+  },
+  {
+    "name": "Staking4all",
+    "type": "validator",
+    "x": "staking4all",
+    "webservices": "https://staking4all.org",
+    "validatorlogo": "staking4all.jpg",
+    "tools": "Grafana & Prometheus Monitoring",
+    "tools_url": {
+      "Grafana & Prometheus Monitoring": "https://github.com/staking4all/monad-monitoring"
+    }
+  },
+  {
+    "name": "B-Harvest",
+    "type": "validator",
+    "x": "bharvest_io",
+    "webservices": "https://bharvest.io",
+    "validatorlogo": "bharvest.jpg",
+    "tools": "Monad Flow, Hardware Compatibility Guide",
+    "tools_url": {
+      "Monad Flow": "https://github.com/b-harvest/monad-flow",
+      "Hardware Compatibility Guide": "http://monadhcl.xyz/"
+    }
+  },
+  {
+    "name": "Laminated Labs",
+    "type": "validator",
+    "validatorlogo": "laminatedlabs.jpg",
+    "tools": "Monad Helm Chart",
+    "tools_url": {
+      "Monad Helm Chart": "https://github.com/laminated-labs/monad-helm"
+    }
+  }
+]
