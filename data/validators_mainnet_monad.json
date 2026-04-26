@@ -182,5 +182,17 @@
     "tools_url": {
       "Monad Helm Chart": "https://github.com/laminated-labs/monad-helm"
     }
+  },
+   {
+  "name": "Cumulo",
+  "x": "Cumulo_pro",
+   "type": "validator",
+  "webservices": "https://cumulo.pro/services/monad/",
+  "validatorlogo": "cumulo.jpg",
+  "explorer": "https://cumulo.pro/services/monad/stats",
+  "tools_url": {
+      "Endpoint status": "https://cumulo.pro/services/monad/endpoints",
+      "Monitoring": "https://cumulo.pro/services/monad/monitoring"
+    }
   }
 ]
