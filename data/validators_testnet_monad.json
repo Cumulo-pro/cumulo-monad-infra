@@ -183,5 +183,16 @@
     "tools_url": {
       "MonadAI Assistant": "https://monad.exploreme.pro/?lumi=true"
     }
+  },
+  {
+  "name": "Cumulo",
+  "x": "Cumulo_pro",
+  "webservices": "https://cumulo.pro/services/monad_testnet/",
+  "validatorlogo": "cumulo.jpg",
+  "explorer": "https://cumulo.pro/services/monad_testnet/stats",
+  "tools_url": {
+      "Endpoint status": "https://cumulo.pro/services/monad_testnet/endpoints".
+      "Monitoring": "https://cumulo.pro/services/monad_testnet/monitoring"
+    }
   }
 ]
