@@ -287,7 +287,7 @@ Confirmed peer connections and block commits within ~2 minutes of startup:
 
 ✅ Node committing live blocks from the testnet.
 
-> **Note:** The WARN message `not voting on proposal, is not coherent` is expected and normal for a full node — it receives validator proposals but does not vote.
+> **Note:** The WARN message `not voting on proposal, is not coherent` is expected and normal for a full node - it receives validator proposals but does not vote.
 
 ---
 
