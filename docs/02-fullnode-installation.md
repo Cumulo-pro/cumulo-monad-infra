@@ -73,7 +73,7 @@ systemctl status otelcol
 
 ---
 
-### 13. Download testnet configuration files
+### 13. Download  configuration files
 
 Configuration files for **full nodes** on testnet:
 
@@ -285,7 +285,7 @@ Confirmed peer connections and block commits within ~2 minutes of startup:
 {"level":"INFO","fields":{"message":"committed block","num_tx":4,"block_num":26474591}}
 ```
 
-✅ Node committing live blocks from the testnet.
+✅ Node committing live blocks.
 
 > **Note:** The WARN message `not voting on proposal, is not coherent` is expected and normal for a full node - it receives validator proposals but does not vote.
 
@@ -295,12 +295,12 @@ Confirmed peer connections and block commits within ~2 minutes of startup:
 
 | Path | Purpose |
 |---|---|
-| `/home/monad/.env` | Environment variables — chain, password, remote config URLs, retention |
-| `/home/monad/monad-bft/config/node.toml` | Node configuration — name, peer discovery, network params |
+| `/home/monad/.env` | Environment variables - chain, password, remote config URLs, retention |
+| `/home/monad/monad-bft/config/node.toml` | Node configuration - name, peer discovery, network params |
 | `/home/monad/monad-bft/config/id-secp` | SECP keystore (node network identity) |
 | `/home/monad/monad-bft/config/id-bls` | BLS keystore (consensus identity) |
-| `/home/monad/pubkey-secp-bls` | Public keys — quick reference |
-| `/opt/monad/backup/` | Keystore backups and password — **store externally** |
+| `/home/monad/pubkey-secp-bls` | Public keys - quick reference |
+| `/opt/monad/backup/` | Keystore backups and password - **store externally** |
 | `/dev/triedb` | Symlink → `nvme1n1p1` (TrieDB raw block device) |
 | `/etc/udev/rules.d/99-triedb.rules` | Persistent udev rule for `/dev/triedb` symlink |
 | `/etc/otelcol/config.yaml` | OTEL Collector configuration |
@@ -329,30 +329,6 @@ bash /opt/monad/scripts/reset-workspace.sh
 curl -sSL $MF_BUCKET/scripts/testnet/restore-from-snapshot.sh | bash
 systemctl start monad-bft monad-execution monad-rpc
 ```
-
----
-
-## Final Status
-
-| Step | Status |
-|---|---|
-| Hardware provisioned | ✅ |
-| LBA 512b verified | ✅ |
-| TrieDB partitioned (`nvme1n1p1`) | ✅ |
-| `/dev/triedb` symlink active | ✅ |
-| `monad-testnet` package installed | ✅ |
-| `monad` user and directories created | ✅ |
-| SMT disabled (BIOS — Supermicro IPMI) | ✅ |
-| Kernel ≥ 6.8.0-60 (running 6.8.0-110) | ✅ |
-| TrieDB initialized (`monad-mpt`) | ✅ |
-| Firewall configured (UFW + iptables) | ✅ |
-| OTEL Collector running | ✅ |
-| Testnet config files downloaded | ✅ |
-| Keystores generated (SECP + BLS) | ✅ |
-| `node.toml` configured | ✅ |
-| Snapshot imported (block 26,462,562) | ✅ |
-| Services enabled + started | ✅ |
-| Node synced — committing live blocks | ✅ |
 
 ---
 
