@@ -4,26 +4,14 @@
 
 ---
 
-## Hardware
-
-| Component | Spec |
-|---|---|
-| CPU | AMD Ryzen 9 7950X3D - 16 cores / 4.2 GHz base (5.7 GHz Turbo) |
-| RAM | 128 GB DDR5 |
-| Storage | 2× 1.92 TB NVMe (Micron 7450 MTFDKCC1T9TFR) - PCIe Gen4 |
-| Network | 1 Gbit/s dedicated - 100 TB/month traffic |
-| OS | Ubuntu 24.04 LTS |
-| Environment | Bare metal (required by Monad) |
-
 ### Hardware vs. Official Requirements
-
-| Requirement | Minimum | Our Server |
-|---|---|---|
-| CPU cores | 16c / 4.5 GHz+ | 16c / 4.2 GHz (5.7 GHz Turbo) ✅ |
-| RAM | 32 GB | 128 GB ✅ |
-| TrieDB disk | 2 TB NVMe PCIe 4 | 1.92 TB NVMe PCIe 4 ✅ |
-| OS/BFT disk | 500 GB NVMe | 1.92 TB NVMe ✅ |
-| Bandwidth | 300 Mbit/s (validator) | 1 Gbit/s ✅ |
+| Requirement | Minimum |
+|---|---|
+| CPU cores | 16c / 4.5 GHz+ |
+| RAM | 32 GB |
+| TrieDB disk | 2 TB NVMe PCIe 4 |
+| OS/BFT disk | 500 GB NVMe |
+| Bandwidth | 300 Mbit/s (validator) |
 
 > **Note on storage:** Micron 7450 is listed in Monad's official docs as functional but with occasional random slowdowns under heavy load. Samsung 980/990 Pro or PM9A1 are rated higher. Monitoring will be in place to detect any I/O degradation.
 
