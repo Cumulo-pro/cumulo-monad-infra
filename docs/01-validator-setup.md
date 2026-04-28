@@ -214,29 +214,6 @@ MPT database internal lists:
 monad-mpt.service: Deactivated successfully.
 ```
 
-✅ TrieDB initialized - 1.75 TB available, service completed cleanly.
-
----
-
-## Status
-
-| Step | Status |
-|---|---|
-| Hardware provisioned | ✅ |
-| LBA 512b verified | ✅ |
-| TrieDB partitioned (`nvme1n1p1`) | ✅ |
-| `/dev/triedb` symlink active | ✅ |
-| `monad` package installed | ✅ |
-| `monad` user and directories created | ✅ |
-| SMT disabled (BIOS — Supermicro IPMI) | ✅ |
-| Kernel ≥ 6.8.0-60 (running 6.8.0-110) | ✅ |
-| TrieDB initialized (`monad-mpt`) | ✅ |
-| OS hardening (UFW, Fail2ban, users) | 🔄 In progress |
-| Node configuration (`node.toml`, keystores) | ⏳ Pending |
-| Services started (`monad-bft`, `monad-execution`, `monad-rpc`) | ⏳ Pending |
-| Node synced to testnet | ⏳ Pending |
-
----
 
 ## References
 
