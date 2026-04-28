@@ -37,7 +37,7 @@ This disk hosts the OS, MonadBFT ledger, config files, and keystores at `/home/m
 
 ```
 nvme1n1        1.92 TB
-└─ nvme1n1p1   1.92 TB   (no filesystem — raw block device)
+└─ nvme1n1p1   1.92 TB   (no filesystem - raw block device)
 ```
 
 Dedicated exclusively to Monad's TrieDB database. No filesystem is mounted on this partition - Monad writes directly to the block device. Exposed to the system via udev symlink at `/dev/triedb`.
