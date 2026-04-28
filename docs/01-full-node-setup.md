@@ -1,6 +1,6 @@
-# Monad - Validator Node Setup
+# Monad - Full Node Setup
 
-> Documentation of the initial infrastructure setup for a Monad testnet validator node.  
+> Documentation of the initial infrastructure setup for a Monad full node.  
 
 ---
 
