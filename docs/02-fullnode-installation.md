@@ -1,8 +1,7 @@
-# Monad Testnet - Full Node Installation
+# Monad - Full Node Installation
 
 > Continuation of [`monad-validator-setup.md`](./monad-validator-setup.md).  
 > Covers full node installation, configuration, snapshot import, and first sync.  
-> Part of Cumulo's validator candidacy process.
 
 ---
 
