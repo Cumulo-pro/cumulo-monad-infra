@@ -208,4 +208,4 @@ monad-mpt.service: Deactivated successfully.
 - [Monad Node Operations Docs](https://docs.monad.xyz/node-ops)
 - [Hardware Requirements](https://docs.monad.xyz/node-ops/hardware-requirements)
 - [Full Node Installation](https://docs.monad.xyz/node-ops/full-node-installation)
-- [Monad HCL — Community Hardware Compatibility List](https://monadhcl.xyz)
+- [Monad HCL - Community Hardware Compatibility List](https://monadhcl.xyz)
