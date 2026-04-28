@@ -1,4 +1,4 @@
-# Monad Testnet - Validator Node Setup
+# Monad - Validator Node Setup
 
 > Documentation of the initial infrastructure setup for a Monad testnet validator node.  
 
