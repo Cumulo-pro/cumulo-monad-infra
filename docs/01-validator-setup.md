@@ -1,7 +1,6 @@
 # Monad Testnet - Validator Node Setup
 
 > Documentation of the initial infrastructure setup for a Monad testnet validator node.  
-> Part of Cumulo's validator candidacy process.
 
 ---
 
