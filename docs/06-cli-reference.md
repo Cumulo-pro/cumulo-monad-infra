@@ -1,4 +1,4 @@
-# Monad Testnet - CLI Reference
+# Useful Commands
 
 > Part of Cumulo's Monad testnet full node infrastructure documentation.  
 > CLI commands organised by category for the day-to-day management of node `full_Cumulo-1`.
