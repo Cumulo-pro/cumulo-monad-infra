@@ -19,7 +19,7 @@
 | Monad version | `v0.14.1` |
 | Network | `monad_testnet` |
 
-> ⚠️ Private keystores (`id-secp`, `id-bls`) and the keystore password backup are stored in an external secrets vault. These files define the node's identity — losing them requires re-registering with a new identity.
+> ⚠️ Private keystores (`id-secp`, `id-bls`) and the keystore password backup are stored in an external secrets vault. These files define the node's identity - losing them requires re-registering with a new identity.
 
 ---
 
