@@ -256,7 +256,7 @@ systemctl enable monad-bft monad-execution monad-rpc
 systemctl start  monad-bft monad-execution monad-rpc
 ```
 
-On startup, `monad-bft` automatically fetches `forkpoint.toml` and `validators.toml` from the remote URLs configured in `.env` — no manual download needed.
+On startup, `monad-bft` automatically fetches `forkpoint.toml` and `validators.toml` from the remote URLs configured in `.env` - no manual download needed.
 
 ---
 
