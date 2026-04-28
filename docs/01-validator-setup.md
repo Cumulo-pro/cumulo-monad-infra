@@ -11,7 +11,7 @@
 |---|---|
 | CPU | AMD Ryzen 9 7950X3D - 16 cores / 4.2 GHz base (5.7 GHz Turbo) |
 | RAM | 128 GB DDR5 |
-| Storage | 2× 1.92 TB NVMe (Micron 7450 MTFDKCC1T9TFR) — PCIe Gen4 |
+| Storage | 2× 1.92 TB NVMe (Micron 7450 MTFDKCC1T9TFR) - PCIe Gen4 |
 | Network | 1 Gbit/s dedicated - 100 TB/month traffic |
 | OS | Ubuntu 24.04 LTS |
 | Environment | Bare metal (required by Monad) |
