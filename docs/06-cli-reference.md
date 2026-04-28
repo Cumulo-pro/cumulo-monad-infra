@@ -490,14 +490,3 @@ sudo ufw status verbose
 | Node far behind | Hard reset with snapshot |
 | Upgrade version | `sudo apt install --reinstall monad=X.Y.Z` + restart |
 | Back up keys | `monad-keystore recover ...` |
-
----
-
-## References
-
-- [Monad Node Operations Docs](https://docs.monad.xyz/node-ops)
-- [General Operations](https://docs.monad.xyz/node-ops/general-operations)
-- [Upgrade Instructions](https://docs.monad.xyz/node-ops/upgrade-instructions)
-- [Recovering a Node](https://docs.monad.xyz/node-ops/node-recovery)
-- [Monad Node Announcements (Telegram)](https://t.me/MonadNodeAnnouncements)
-- [Public Dashboard](https://cumulo.pro/services/monad_testnet/metrics.php)
