@@ -4,7 +4,7 @@ Non-trivial or undocumented operations on the Monad testnet node.
 
 ---
 
-## 2026-05-01 — CVE-2026-31431 Mitigation (algif_aead)
+## 2026-05-01 - CVE-2026-31431 Mitigation (algif_aead)
 
 **Type:** Security mitigation  
 **Node:** full_Cumulo-1 (192.155.100.132)  
@@ -39,7 +39,7 @@ modprobe: ERROR: could not insert 'algif_aead': Invalid argument
 
 ### Result
 
-- Module blacklisted via `/etc/modprobe.d/disable-algif.conf` — persists across reboots
+- Module blacklisted via `/etc/modprobe.d/disable-algif.conf` - persists across reboots
 - Module unloaded immediately from memory
 - No node restart required
 
